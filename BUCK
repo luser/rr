@@ -48,10 +48,7 @@ for generated in GENERATED_FILES:
         name = 'gen_%s' % generated,
         cmd = '$(exe :generate_syscalls) $OUT',
         out = generated,
-        deps = [
-            ':generate_syscalls',
-        ]
-)
+    )
 
 cxx_library(
     name='headers',
@@ -149,5 +146,4 @@ for target, dest in [('rr', 'bin/rr'), ('rrpreload#default,shared', 'lib/librrpr
         name = 'copy_%s' % target.replace('#', '_'),
         cmd = 'cp $(location %s) $OUT' % realtarget,
         out = dest,
-        deps = [realtarget]
     )
